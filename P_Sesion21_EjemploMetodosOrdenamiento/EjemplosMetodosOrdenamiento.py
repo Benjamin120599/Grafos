@@ -7,6 +7,89 @@ class MetodosOrdenamiento:
     
     aux = 0;
     
+    def ordenamientoBurbuja1(self, vector):
+        
+        m = MetodosOrdenamiento
+        
+        contRecorrido=0 
+        contComparaciones=0
+        contIntercambios=0
+        
+        for i in range(2, len(vector)+1):
+            for j in range(0, len(vector)-i+1):
+                
+                contComparaciones = contComparaciones + 1
+                if(vector[j] > vector[j+1]):
+                    aux = vector[j]
+                    vector[j] = vector[j+1]
+                    vector[j+1] = aux
+                    contIntercambios = contIntercambios + 1
+                
+                contRecorrido = contRecorrido + 1
+         
+        m.mostrarVector(None, vector)
+        tiempoFinal = timeit.timeit()
+        m.mostrarDatosEficiencia(None, contRecorrido, contIntercambios, contComparaciones, tiempoFinal)
+        
+    def ordenamientoBurbuja2(self, vector):
+        
+        m = MetodosOrdenamiento
+        
+        contRecorrido2=0 
+        contComparaciones2=0 
+        contIntercambios2=0
+        
+        i=1
+        ordenado = False
+        
+        while( (i < len(vector)) and (ordenado == False) ):
+            i=i+1
+            ordenado=True
+            for j in range(0, len(vector)-i +1):
+                contComparaciones2 = contComparaciones2 + 1
+                if(vector[j] > vector[j+1]):
+                    ordenado = False
+                    aux = vector[j]
+                    vector[j] = vector[j+1]
+                    vector[j+1] = aux
+                    contIntercambios2 = contIntercambios2 + 1
+                
+                contRecorrido2 = contRecorrido2 + 1
+            
+        m.mostrarVector(None, vector)
+        tiempoFinal = timeit.timeit()
+        m.mostrarDatosEficiencia(None, contRecorrido2, contIntercambios2, contComparaciones2, tiempoFinal)
+    
+    def ordenamientoBurbuja3(self, vector):
+        
+        m = MetodosOrdenamiento
+        
+        contRecorrido3=0 
+        contComparaciones3=0
+        contIntercambios3=0
+        
+        i=1
+        ordenado = False;
+        
+        while( (i < len(vector)) and (ordenado == True) ):
+            i=i+1
+            ordenado = True
+            
+            for j in range(0, len(vector)-1):
+                contComparaciones3 = contComparaciones3 + 1
+                if(vector[j] >= vector[j+1]):
+                    contIntercambios3 = contIntercambios3 + 1
+                    #ordenado = False
+                    aux = vector[j]
+                    vector[j] = vector[j+1]
+                    vector[j+1] = aux
+                
+                contRecorrido3 = contRecorrido3 + 1
+            
+        m.mostrarVector(None, vector)
+        tiempoFinal = timeit.timeit()
+        m.mostrarDatosEficiencia(None, contRecorrido3, contIntercambios3, contComparaciones3, tiempoFinal)
+        
     
 
      
