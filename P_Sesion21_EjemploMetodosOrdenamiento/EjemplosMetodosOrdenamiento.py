@@ -124,6 +124,32 @@ class MetodosOrdenamiento:
         tiempoFinal = timeit.timeit()
         m.mostrarDatosEficiencia(None, contRecorrido4, contIntercambios4, contComparaciones4, tiempoFinal)
 
+    def ordenamientoPorInsercion(self, vector):
+        
+        m = MetodosOrdenamiento
+        
+        contRecorrido5=0
+        contComparaciones5=0
+        contIntercambios5=0
+        
+        for i in range(1, len(vector)):
+            valor = vector[i]
+            j = i - 1
+            while(j >= 0):
+                contComparaciones5 = contComparaciones5 + 1
+                if(valor < vector[j]):
+                    vector[j+1] = vector[j]
+                    vector[j] = valor
+                    j = j-1
+                    contIntercambios5 = contIntercambios5 + 1
+                else:
+                    break
+            contRecorrido5 = contRecorrido5 + 1    
+            
+        m.mostrarVector(None, vector)
+        tiempoFinal = timeit.timeit()
+        m.mostrarDatosEficiencia(None, contRecorrido5, contIntercambios5, contComparaciones5, tiempoFinal)  
+
     def mostrarVector(self, vector):
         
         for i in range(0, len(vector)):
