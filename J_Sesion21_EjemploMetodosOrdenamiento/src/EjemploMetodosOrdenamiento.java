@@ -99,6 +99,121 @@ class MetodosOrdenamiento {
 		
 	}
 
+	public void ordenamientoPorSeleccion(int[] numeros) {
+		
+		int contRecorrido4=0, contComparaciones4=0, contIntercambios4=0;
+		long tiempoFinal=0;
+		
+		long tiempoInicial = System.nanoTime();
+		
+		for(int i=0; i<numeros.length; i++) {
+			int minimo=i;
+			for(int j=i+1; j < numeros.length; j++) {
+				contComparaciones4++;
+				if(numeros[j] < numeros[minimo]) {
+					minimo = j;
+				}
+				contRecorrido4++;
+			}
+			int aux = numeros[i];
+			numeros[i] = numeros[minimo];
+			numeros[minimo] = aux;
+			contIntercambios4++;
+		}
+		
+		mostrarVector(numeros);
+		tiempoFinal = System.nanoTime() - tiempoInicial;
+		
+		mostrarDatosEficiencia(contRecorrido4, contComparaciones4, contIntercambios4, tiempoFinal);
+		
+	}
+	
+	public void ordenamientoPorInsercion(int[] numeros) {
+		
+		int contRecorrido5=0, contComparaciones5=0, contIntercambios5=0;
+		long tiempoFinal=0;
+		int i, j, aux;
+		
+		long tiempoInicial = System.nanoTime();
+		
+		for(i=1; i < numeros.length; i++) {
+			aux = numeros[i];
+			j = i-1;
+			while( (j>=0) && (aux < numeros[j]) ) {
+				numeros[j+1] = numeros[j];
+				j--;
+				contRecorrido5++;
+			}
+			numeros[j+1] = aux;	
+			contIntercambios5++;
+		}
+		
+		mostrarVector(numeros);
+		tiempoFinal = System.nanoTime() - tiempoInicial;
+		
+		mostrarDatosEficiencia(contRecorrido5, contComparaciones5, contIntercambios5, tiempoFinal);
+		
+	}
+	
+	public void mostrarVector(int[] vector) {
+		
+		for(int i=0; i<vector.length; i++) {
+			System.out.print("["+vector[i]+"] -- ");
+		}
+		
+	}
+	
+	public void mostrarDatosEficiencia(int contRecorrido, int contComparaciones, int contIntercambios, long tiempoFinal) {
+		
+		System.out.println("\n");
+		System.out.println("================ Datos de eficiencia del algoritmo. ================");
+		System.out.println();
+		System.out.println("RECORRIDOS O PASADAS: "+contRecorrido);
+		System.out.println("COMPARACIONES: "+contComparaciones);
+		System.out.println("INTERCAMBIOS: "+contIntercambios);
+		System.out.println("TIEMPO DE EJECUCION: "+(tiempoFinal/1e6)+" ms");
+		
+	}
+	
+	public int[] vector1000() {
+		int[] vector = new int[1000];
+		int numeroAleatorio = 0;
+		for(int i=0; i<vector.length; i++) {
+			numeroAleatorio = (int)(Math.random() * 100) + 1;
+			vector[i] = numeroAleatorio;
+		}
+		return vector;
+	}
+	
+	public int[] vector10000() {
+		int[] vector = new int[10000];
+		int numeroAleatorio = 0;
+		for(int i=0; i<vector.length; i++) {
+			numeroAleatorio = (int)(Math.random() * 10) + 1;
+			vector[i] = numeroAleatorio;
+		}
+		return vector;
+	}
+	
+	public int[] vector100000() {
+		int[] vector = new int[100000];
+		int numeroAleatorio = 0;
+		for(int i=0; i<vector.length; i++) {
+			numeroAleatorio = (int)(Math.random() * 100) + 1;
+			vector[i] = numeroAleatorio;
+		}
+		return vector;
+	}
+	
+	public int[] vector1000000() {
+		int[] vector = new int[1000000];
+		int numeroAleatorio = 0;
+		for(int i=0; i<vector.length; i++) {
+			numeroAleatorio = (int)(Math.random() * 100) + 1;
+			vector[i] = numeroAleatorio;
+		}
+		return vector;
+	}
 	
 }
 
