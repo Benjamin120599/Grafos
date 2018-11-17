@@ -4,7 +4,101 @@ class MetodosOrdenamiento {
 	
 	int aux=0;
 	
+	public void ordenamientoBurbuja1(int[] numeros) {
+		int contRecorrido=0, contComparaciones=0, contIntercambios=0;
+		long tiempoFinal=0;
+		
+		//tiempo inicial
+		long tiempoInicio = System.nanoTime();
+		
+		for(int i=2; i <= numeros.length; i++) {
+			for(int j=0; j <= numeros.length-i; j++) {
+				
+				contComparaciones++;
+				if(numeros[j] > numeros[j+1]) {
+					aux = numeros[j];
+					numeros[j] = numeros[j+1];
+					numeros[j+1] = aux;
+					contIntercambios++;
+				}
+				contRecorrido++;
+			}
+		}
+		
+		mostrarVector(numeros);
+		//tiempo final
+		tiempoFinal = System.nanoTime() - tiempoInicio;
+		
+		mostrarDatosEficiencia(contRecorrido, contComparaciones, contIntercambios, tiempoFinal);
+		
+	}
 	
+	public void ordenamientoBurbuja2(int[] numeros) {
+		int contRecorrido2=0, contComparaciones2=0, contIntercambios2=0;
+		long tiempoFinal=0;
+		
+		int i=1;
+		boolean ordenado = false;
+		
+		long tiempoInicio = System.nanoTime();
+		
+		while( (i < numeros.length) && (ordenado == false)) {
+			i=i+1;
+			ordenado=true;
+			for(int j=0; j <= numeros.length -i; j++) {
+				contComparaciones2++;
+				if(numeros[j] > numeros[j+1]) {
+					ordenado = false;
+					aux = numeros[j];
+					numeros[j] = numeros[j+1];
+					numeros[j+1] = aux;
+					contIntercambios2++;
+				}
+				contRecorrido2++;
+			}
+		}
+		mostrarVector(numeros);
+		
+		tiempoFinal = System.nanoTime() - tiempoInicio;
+	
+		mostrarDatosEficiencia(contRecorrido2, contComparaciones2, contIntercambios2, tiempoFinal);
+	}
+	
+	public void ordenamientoBurbuja3(int[] numeros) {
+		
+		int contRecorrido3=0, contComparaciones3=0, contIntercambios3=0;
+		long tiempoFinal=0;
+		
+		int i=1;
+		boolean ordenado;
+		
+		long tiempoInicial = System.nanoTime();
+		
+		do {
+			i=i+1;
+			ordenado = true;
+			
+			for(int j=0; j <= numeros.length-i; j++) {
+				contComparaciones3++;
+				if(numeros[j] > numeros[j+1]) {
+					contIntercambios3++;
+					//ordenado = false;
+					aux = numeros[j];
+					numeros[j] = numeros[j+1];
+					numeros[j+1] = aux;
+				}
+				contRecorrido3++;
+			}
+		} while( (i < numeros.length) && (ordenado == true) );
+		
+		mostrarVector(numeros);
+		
+		tiempoFinal = System.nanoTime() - tiempoInicial;
+		
+		mostrarDatosEficiencia(contRecorrido3, contComparaciones3, contIntercambios3, tiempoFinal);
+		
+	}
+
 	
 }
 
