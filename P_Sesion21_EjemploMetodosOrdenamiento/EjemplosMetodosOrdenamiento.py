@@ -98,6 +98,32 @@ class MetodosOrdenamiento:
 #=====================================================================================================================================
 #=====================================================================================================================================
 
+    def ordenamientoPorSeleccion(self, vector):
+        
+        m = MetodosOrdenamiento
+        
+        contRecorrido4=0
+        contComparaciones4=0
+        contIntercambios4=0
+        
+        for i in range(len(vector)-1, 0, -1):
+            mayor = 0
+            for j in range(1, i+1):
+                contComparaciones4 = contComparaciones4 + 1 
+                if(vector[j] > vector[mayor]):
+                    mayor = j
+                
+            contRecorrido4 = contRecorrido4 + 1
+            
+            aux = vector[i]
+            vector[i] = vector[mayor]
+            vector[mayor] = aux
+            contIntercambios4 = contIntercambios4 + 1
+        
+        m.mostrarVector(None, vector)
+        tiempoFinal = timeit.timeit()
+        m.mostrarDatosEficiencia(None, contRecorrido4, contIntercambios4, contComparaciones4, tiempoFinal)
+
     def mostrarVector(self, vector):
         
         for i in range(0, len(vector)):
