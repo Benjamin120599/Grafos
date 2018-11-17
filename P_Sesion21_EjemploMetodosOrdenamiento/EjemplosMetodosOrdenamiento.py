@@ -98,6 +98,59 @@ class MetodosOrdenamiento:
 #=====================================================================================================================================
 #=====================================================================================================================================
 
+    def mostrarVector(self, vector):
+        
+        for i in range(0, len(vector)):
+            print("["+str(vector[i])+"] -- ", end=' ')
+        
+        print("\n")
+    
+    def mostrarDatosEficiencia(self, recorrido, intercambio, comparacion, tiempoFinal):
+        
+        print("")
+        print("================ Datos de eficiencia del algoritmo. ================")
+        print()
+        print("RECORRIDOS O PASADAS: "+str(recorrido))
+        print("COMPARACIONES: "+str(comparacion))
+        print("INTERCAMBIOS: "+str(intercambio))
+        print("TIEMPO DE EJECUCION: "+str(tiempoFinal)+" s")
+        print("")
+        
+    def vector1000(self):
+        vector = []
+        numeroAleatorio = 0
+        for i in range(0, 1000):
+            numeroAleatorio =  (int)(random() * 100) + 1
+            vector.insert(i, numeroAleatorio)
+        
+        return vector;
+    
+    def vector10000(self):
+        vector = []
+        numeroAleatorio = 0
+        for i in range(0, 10000):
+            numeroAleatorio =  (int)(random() * 100) + 1
+            vector.insert(i, numeroAleatorio)
+        
+        return vector;
+    
+    def vector100000(self):
+        vector = []
+        numeroAleatorio = 0
+        for i in range(0, 100000):
+            numeroAleatorio =  (int)(random() * 100) + 1
+            vector.insert(i, numeroAleatorio)
+        
+        return vector;
+    
+    def vector1000000(self):
+        vector = []
+        numeroAleatorio = 0
+        for i in range(0, 1000000):
+            numeroAleatorio =  (int)(random() * 100) + 1
+            vector.insert(i, numeroAleatorio)
+        
+        return vector;
 
 mo = MetodosOrdenamiento
 
